@@ -1,0 +1,38 @@
+﻿@model MyTaskManager.Models.Task
+
+@{
+    ViewData["Title"] = "Criar Tarefa";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Criar Nova Tarefa</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="Title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="Title" name="Title" asp-for="Title" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Status" class="form-label">Status</label>
+            <select id="Status" name="Status" asp-for="Status" class="form-select" required>
+                <option value="Pendente">Pendente</option>
+                <option value="Em Progresso">Em Progresso</option>
+                <option value="Concluída">Concluída</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="DueDate" class="form-label">Data de Vencimento</label>
+            <input type="date" class="form-control" id="DueDate" name="DueDate" asp-for="DueDate" required />
+            <span asp-validation-for="DueDate" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="@Url.Action("Index", "Tasks")" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
